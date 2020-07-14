@@ -72,7 +72,7 @@ module.exports.connections = {
    * npm install sails-postgresql
    */
   postgres: {
-    adapter: 'sails-postgresql',
+    adapter: 'avenda-sails-postgresql',
     host: process.env.DB_HOST || 'localhost',
     user:  process.env.DB_USER || 'postgres',
     password: process.env.DB_PASSWORD || 'admin1!',
