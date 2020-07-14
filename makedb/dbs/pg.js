@@ -10,7 +10,7 @@ var _ = require("lodash");
 
 module.exports = {
     run : function (next) {
-
+        var pool = new pg.Pool()
         console.log("Using postgres DB Adapter.");
 
         var self     = this;
@@ -32,7 +32,7 @@ module.exports = {
 
         // console.log("Connection Options =>", opts);
 
-        pg.connect(opts, function (err, client, done) {
+        pool.connect(opts, function (err, client, done) {
             if (err) {
 
                 if(err.code == "3D000")
@@ -51,17 +51,18 @@ module.exports = {
             }
 
         });
+        pool.end()
     },
 
 
     create : function(opts,next) {
-
+        var pool = new pg.Pool()
         // Hook up to postgres db so we can create a new one
         var defaultDbOpts = _.merge(_.cloneDeep(opts),{
             database : "postgres"
         });
 
-        pg.connect(defaultDbOpts, function (err, client, done) {
+        pool.connect(defaultDbOpts, function (err, client, done) {
             if (err) {
                 console.log(err);
                 done();
@@ -82,5 +83,6 @@ module.exports = {
 
             });
         });
+        pool.end()
     }
 }
