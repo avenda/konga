@@ -4,7 +4,7 @@
 
 'use strict'
 
-var pg = require("../../node_modules/sails-postgresql/node_modules/pg");
+var pg = require("../../node_modules/avenda-sails-postgresql/node_modules/pg");
 var dbConf = require("../../config/connections");
 var _ = require("lodash");
 
